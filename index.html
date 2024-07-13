@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <link rel="stylesheet" href=".assets/styles.css">
+    <style>
+        /* Added style for success message */
+        #successMessage {
+            display: none;
+            color: green;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="registration-form">
+        <h3><strong>Login Page</strong></h3>
+        <form id="loginForm"> <!-- Added ID 'loginForm' here -->
+            <div class="user">
+                <label for="name"><strong> Username: </strong></label>
+                <input type="text" id="name" name="name" placeholder="Enter" required/>
+            </div>
+
+            <div class="user">
+                <label for="email"><strong> Email: </strong></label>
+                <input type="text" id="email" name="email" placeholder="Enter" required/>
+            </div>
+
+            <div class="user">
+                <label for="pwd"><strong> Password: </strong></label>
+                <input type="password" id="pwd" name="pwd" placeholder="Enter" required/>
+            </div>
+
+            <div class="radio">
+                <label for="male"><strong> Male</strong></label>
+                <input type="radio" id="male" name="gender" value="male">
+                <label for="female"><strong> Female </strong></label>
+                <input type="radio" id="female" name="gender" value="female">
+                <label for="others"><strong> Others </strong></label>
+                <input type="radio" id="others" name="gender" value="others">
+            </div>
+            
+            <div class="button">
+                <input type="submit" id="button" value="Submit">
+            </div>
+        </form>
+        <!-- Success message -->
+        <div id="successMessage">Successfully registered! Redirecting...</div>
+    </div>
+
+    <script>
+        document.getElementById('loginForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const gender = document.querySelector('input[name="gender"]:checked') ? document.querySelector('input[name="gender"]:checked').value : '';
+
+            const userData = {
+                name: name,
+                email: email,
+                gender: gender
+            };
+            localStorage.setItem('userData', JSON.stringify(userData));
+
+            // Display success message
+            document.getElementById('successMessage').style.display = 'block';
+
+            // Redirect after 2 seconds
+            setTimeout(function() {
+                window.location.href = './pages/content.html'; 
+            }, 2000);
+        });
+    </script>
+</body>
+</html>
