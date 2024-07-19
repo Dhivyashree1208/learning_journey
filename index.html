@@ -4,9 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login Page</title>
-    <link rel="stylesheet" href=".assets/styles.css">
+    <link rel="stylesheet" href="assets/styles.css">
     <style>
-        /* Added style for success message */
+        
         #successMessage {
             display: none;
             color: green;
@@ -18,7 +18,7 @@
 <body>
     <div class="registration-form">
         <h3><strong>Login Page</strong></h3>
-        <form id="loginForm"> <!-- Added ID 'loginForm' here -->
+        <form id="loginForm"> 
             <div class="user">
                 <label for="name"><strong> Username: </strong></label>
                 <input type="text" id="name" name="name" placeholder="Enter" required/>
@@ -47,7 +47,7 @@
                 <input type="submit" id="button" value="Submit">
             </div>
         </form>
-        <!-- Success message -->
+        
         <div id="successMessage">Successfully registered! Redirecting...</div>
     </div>
 
@@ -66,10 +66,8 @@
             };
             localStorage.setItem('userData', JSON.stringify(userData));
 
-            // Display success message
             document.getElementById('successMessage').style.display = 'block';
 
-            // Redirect after 2 seconds
             setTimeout(function() {
                 window.location.href = './pages/content.html'; 
             }, 2000);
